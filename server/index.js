@@ -16,9 +16,9 @@ const {
 } = require('./controller')
 
 app.get('/api/compliment', getCompliment);
-app.get('/api/compliment/fortune', getFortune);
-app.get('/api/compliment/fortune/player', getPlayerNames)
-app.post('api/compliment/fortune/player/:name', addPlayer);
+app.get('/api/fortune', getFortune);
+app.get('/api/player', getPlayerNames)
+app.post('/api/player/:name', addPlayer);
 
 
 

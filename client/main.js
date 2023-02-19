@@ -5,7 +5,7 @@
 
 const complimentBtn = document.getElementById("complimentButton")
 const fortuneBtm = document.getElementById('fortuneButton')
-const playerList = document.getElementById("player-list")
+const playerList = document.querySelector("#player-list")
 const form = document.querySelector('form')
 const input = document.querySelector('input')
 
@@ -20,7 +20,7 @@ const getCompliment = () => {
 };
 
 const getFortune = () =>{
-    axios.get("http://localhost:4000/api/compliment/fortune")
+    axios.get("http://localhost:4000/api/fortune")
         .then(res =>{
             const data = res.data;
             alert(data);
@@ -29,14 +29,20 @@ const getFortune = () =>{
 
 }
 const createPLayerList = (arr) =>{
+    playerList.innerHTML = ""
     arr.forEach((name) => {
         let item = document.createElement('li')
-        item.textContent = name 
+        let itemSpan = document.createElement('span')
+        itemSpan.textContent = name 
+        
+        item.appendChild(itemSpan)
+        playerList.appendChild(item)
+
     });
 }
 
 const getPlayerNames = () =>{
-    axios.get("http://localhost:4000/api/compliment/fortune/player")
+    axios.get("http://localhost:4000/api/player")
         .then(response =>{
             createPLayerList(response.data)
         })
@@ -45,11 +51,13 @@ const getPlayerNames = () =>{
 
 const addPlayer = (evt) =>{
     evt.preventDefault()
-    axios.post("http://localhost:4000/api/compliment/fortune/player/:name")
+    axios.post(baseURL + `/${input.value}`)
         .then(response =>{
             createPLayerList(response.data)
         })
         .catch(err => console.log(err))
+
+    input.value = ""
 
 }
 
