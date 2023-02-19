@@ -12,6 +12,7 @@ const {
     getFortune,
     getPlayerNames,
     addPlayer,
+    deletePlayer,
 
 } = require('./controller')
 
@@ -19,6 +20,7 @@ app.get('/api/compliment', getCompliment);
 app.get('/api/fortune', getFortune);
 app.get('/api/player', getPlayerNames)
 app.post('/api/player/:name', addPlayer);
+app.delete('/api/player/:index', deletePlayer)
 
 
 

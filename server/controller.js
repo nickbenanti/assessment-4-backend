@@ -1,4 +1,4 @@
-let arr = ["nick"];
+let arr = ["Tyler Seguin", "Jamie Benn", "Roope Hintz", "Jason Robertson"];
 
 module.exports = {
 
@@ -26,6 +26,11 @@ module.exports = {
     
     addPlayer: (req,res) =>{
         arr.push(req.params.name)
+        res.status(200).send(arr)
+    },
+    deletePlayer: (req,res) =>{
+        let { index } = req.params
+        arr.splice(index,0)
         res.status(200).send(arr)
     }
 
