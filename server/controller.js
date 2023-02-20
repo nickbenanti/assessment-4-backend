@@ -30,7 +30,7 @@ module.exports = {
     },
     deletePlayer: (req,res) =>{
         let { index } = req.params
-        arr.splice(index,0)
+        arr.splice(index,1)
         res.status(200).send(arr)
     }
 
